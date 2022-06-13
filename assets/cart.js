@@ -39,10 +39,8 @@ const generateTotal = () => {
 
 let generateCartItems = () => {
 		shoppingCart.innerHTML = basket.map(ele => {
-			debugger
 			let {id, item} = ele;
 			let search = shopItemsData.find(ele => ele.id == id) || [];
-			console.log(search);
 			let {img, name, price} = search; 
 			return `
 				<div class="cart-item">

@@ -5,9 +5,7 @@ basket = !basket ? [] : basket;
 
 let generateShop = () => {
 	return shopItemsData.map(ele => {
-		console.log(basket);
 		let {id,name,desc,price,img} = ele; //object desestructing
-		// id = parseInt(id);
 		let search = basket.find((x) => x.id == id) || []
 		return `
 		<div class="item" id=product-id-${id}>
@@ -33,7 +31,6 @@ let generateShop = () => {
 shop.innerHTML = generateShop();
 
 const increment = (id) => {
-	debugger
 	let search = basket.find(ele => ele.id == id);
 	if (search === undefined || search === 0) {
 		basket.push({
@@ -44,17 +41,11 @@ const increment = (id) => {
 		search.item++;
 	}
 	localStorage.setItem("data", JSON.stringify(basket));
-	// console.log(basket);
 	updateQuantity(id);
 }
 
 const decrement = (id) => {
 	let search = basket.find(x => x.id == id);
-	// if (search && search.item > 0) {
-	// 	search.item -= 1;
-	// } else if (search.item === undefined || search.item === 0) {
-	// 	return;
-	// }
 	if (!search.item) return;
 	search.item -= 1;
 	
